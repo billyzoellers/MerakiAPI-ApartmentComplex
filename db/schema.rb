@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_27_152256) do
+ActiveRecord::Schema.define(version: 2018_09_27_233522) do
 
   create_table "bandwidth_packages", force: :cascade do |t|
     t.string "name"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 2018_09_27_152256) do
     t.integer "bandwidth_package_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "mac_address"
+    t.string "error"
     t.index ["bandwidth_package_id"], name: "index_units_on_bandwidth_package_id"
   end
 

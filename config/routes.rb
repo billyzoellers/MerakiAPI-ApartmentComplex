@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  resources :units
+    resources :units, except: [:new, :destroy, :show] do
+        get 'troubleshoot'
+    end
   
 end

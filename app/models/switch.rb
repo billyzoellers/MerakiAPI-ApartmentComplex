@@ -40,6 +40,6 @@ class Switch < ApplicationRecord
                 end
             }
             
-            return hash
+            return true
     end
 end

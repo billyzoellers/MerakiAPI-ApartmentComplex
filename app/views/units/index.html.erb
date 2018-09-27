@@ -1,10 +1,49 @@
-<div class="container-fluid">
-  <div class="d-flex row flex-row-reverse">
-    <div class="col-md-9 col-lg-10">
-      <%= render 'table' %>
+<div class="row">
+    <div class="col-lg-6">
+      <h1>Apartments</h1>
     </div>
-    <div class="col-md-3 col-lg-2" id="search">
-      <%= render 'searchform' %>
+    <div class="col-lg-6">
+      <%= search_form_for @q, :html => { :class => 'form-inline' } do |f| %>
+        <%= f.text_field :name_cont, class: "form-control" %>
+        <%= f.submit "Search", :name => nil, :class => "btn btn-secondary" %>
+      <% end %>
     </div>
   </div>
+  <div id="script-table">
+    <table class="table table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th>Unit Number</th>
+          <th>Bandwidth Package</th>
+          <th width="90px"></th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @units.each do |unit| %>
+          <tr>
+            <td>Apartment <%= unit.name %></td>
+            <td>
+              <% if unit.bandwidth_package.nil? %>
+                <small>15M down, 10M up <strong>(Default)</strong></small>
+              <% else %>
+                <small><%= unit.bandwidth_package.name %></small>
+              <% end %>
+            </td>
+            <td>
+              <div class="btn-group">
+              <%= link_to edit_unit_path(unit), remote: true, class: "btn btn-secondary btn-sm", role: "button" do %>
+                  <%= icon('fas', 'edit') %>
+                <% end %>
+                <%= link_to unit_troubleshoot_path(unit), remote: true, class: "btn btn-light btn-sm", role: "button" do %>
+                  <%= icon('fas', 'laptop') %>
+                <% end %>
+              </div>
+              
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 </div>
+<center><%= paginate @units %></center>

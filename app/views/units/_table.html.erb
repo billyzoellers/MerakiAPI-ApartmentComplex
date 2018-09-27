@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-lg-6">
+      <h1>Units</h1>
+    </div>
+    <div class="col-lg-6 d-lg-block">
+      <span class="text-muted">Listing <%= pluralize(@units.count, 'unit') %></span>
+    </div>
+  </div>
+  <div id="script-table">
+    <table class="table table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th><%= sort_link(@q, :name) %></th>
+          <th>Switch / Port</th>
+          <th>Bandwidth Package</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @units.each do |unit| %>
+          <tr>
+            <td><%= link_to unit.name, unit %></td>
+            <td></td>
+            <td></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
+<center><%= paginate @units %></center>

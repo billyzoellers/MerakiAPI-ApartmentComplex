@@ -4,8 +4,8 @@ class UnitsController < ApplicationController
   
   def index
     @q = Unit.ransack(params[:q])
-    @q.sorts = 'name asc' if @q.sorts.empty?
-    @units = @q.result(distinct: true).page(params[:page])
+    @q.sorts = 'my_sort asc' if @q.sorts.empty?
+    @units = @q.result(distinct: true).page(params[:page]).per(50)
 
     
   end

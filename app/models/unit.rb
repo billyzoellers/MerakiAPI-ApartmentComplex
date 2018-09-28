@@ -2,8 +2,14 @@ class Unit < ApplicationRecord
   belongs_to :bandwidth_package
   has_many :switch_ports
   
-  validates_format_of :mac_address, :with => /\A([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})\Z/
+  validates_format_of :mac_address, :with => /\A([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})\Z/, :message => "could not be found. Ask resident to connect their router and then try again."
   before_save :push_updates_to_meraki
+  
+  ransacker :my_sort do
+    Arel.sql(
+      'cast(name as unsigned)'
+    )
+  end
   
   def bandwidth_package_id=(value)
     check_for_mac_change

@@ -13,7 +13,7 @@
     
   </div>
   <div class="modal-footer">
-    <%= f.submit "Save", class: "btn btn-primary" %>
+    <%= f.button "Save", class: "btn btn-primary", data: { disable_with: raw(" <i class='fas fa-spinner fa-pulse'></i> Configuring.. ") } %>
     <%= link_to "Cancel", "#", class: "btn btn-secondary", data: {dismiss: "modal"} %>
   </div>
 <% end %>

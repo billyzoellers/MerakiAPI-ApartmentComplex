@@ -7,7 +7,7 @@ class Unit < ApplicationRecord
   
   ransacker :my_sort do
     Arel.sql(
-      'NULLIF(regexp_replace(varchar_column, '\D', '', 'g'), '')::int'
+      "NULLIF(regexp_replace(varchar_column, '\D', '', 'g'), '')::int"
     )
   end
   

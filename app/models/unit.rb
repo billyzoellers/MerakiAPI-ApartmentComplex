@@ -7,7 +7,7 @@ class Unit < ApplicationRecord
   
   ransacker :my_sort do
     Arel.sql(
-      'name::int'
+      "TO_NUMBER(name, '9999')"
     )
   end
   

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_28_000031) do
+ActiveRecord::Schema.define(version: 2018_09_28_161904) do
 
   create_table "bandwidth_packages", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2018_09_28_000031) do
     t.string "group_policy_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "display_order"
     t.index ["network_id"], name: "index_bandwidth_packages_on_network_id"
   end
 

@@ -1,0 +1,62 @@
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Troubleshooting - Apartment <%= @unit.name %></h5>
+            <%= link_to "#", class: "close", data: {dismiss: "modal"} do %>
+              <span aria-hidden="true">&times;</span>
+            <% end %>
+        </div>
+        
+        <div class="modal-body">
+            <h3>Device registration</h3>
+            <% if @unit.error.nil? && @unit.mac_address %>
+                <div class="alert alert-primary" role="alert">
+                  A device has been detected with MAC address <strong><%= @unit.mac_address %></strong>.
+                  <br />
+                  <small><em>Reccommended troubleshooting: confirm with the resident that the MAC address matches their router.</em></small>
+                </div>
+            <% elsif @unit.error.nil? %>
+                <div class="alert alert-warning" role="alert">
+                  No device has been detected, and no error reported.
+                  <br />
+                  <small><em>Reccommended troubleshooting: contact IT support.</em></small>
+                </div>
+            <% elsif @unit.error.include?('MACNOTFOUND') %>
+                <div class="alert alert-danger" role="alert">
+                  <strong>No MAC address found</strong> No device was detected for this apartment.
+                  <br />
+                  <small><em>Reccommended troubleshooting: ask the resident to connect their router, and then try to apply a bandwidth package.</em></small>
+                </div>
+            <% elsif @unit.error.include?('MACUPDATE') %>
+                <div class="alert alert-danger" role="alert">
+                  <strong>Too many devices</strong> Too many devices were detected for this apartment.
+                  <br />
+                  <small><em>Reccommended troubleshooting: confirm with resident that ONLY the internet port of their router is connected. Also confirm that only one internet port is in use.</em></small>
+                </div>
+            <% else %>
+                <div class="alert alert-danger" role="alert">
+                  <strong>Unknown error</strong> <%= @unit.error %>
+                  <br />
+                  <small><em>Reccommended troubleshooting: contact IT support</em></small>
+                </div>
+            <% end %>
+            
+            <h4>Technical information</h4>
+            <div class="alert alert-info" role="alert">
+                 Unit has <%= @unit.switch_ports.count %> switch ports configured.
+                 <br />
+                 <ul class="list-group">
+                 <% @unit.switch_ports.each do |port| %>
+                    <li class="list-group-item">
+                     <strong>Switch</strong> <%= port.switch.serial %> <strong>Port</strong> <%= port.number %>
+                    </li> 
+                <% end %>
+                </ul>
+            </div>
+            <div class="alert alert-info" role="alert">
+                Unit policy last updated <%= @unit.updated_at %>
+            </div>
+        
+        </div>
+    </div>
+</div>

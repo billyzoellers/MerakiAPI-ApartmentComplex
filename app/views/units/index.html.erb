@@ -22,7 +22,7 @@
       <tbody>
         <% @units.each do |unit| %>
           <tr>
-            <td>Apartment <%= unit.name %> <% unless unit.error.nil? %><i class="fas fa-exclamation-triangle" style="color:red"></i><% end %></td>
+            <td>Apartment <%= unit.name %></td>
             <td>
               <% if unit.bandwidth_package.nil? %>
                 <small>15M down, 10M up <strong>(Default)</strong></small>

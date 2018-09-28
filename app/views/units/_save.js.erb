@@ -1,0 +1,9 @@
+$("ul.errors").html("")
+<% if @unit.errors.any? %>
+  <% @unit.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% end %>
+<% else %>
+  $('#unit-table').load(document.URL +  ' #unit-table');
+  $("#modal").modal("hide")
+<% end %>

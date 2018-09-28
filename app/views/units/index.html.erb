@@ -9,7 +9,7 @@
       <% end %>
     </div>
   </div>
-  <div id="script-table">
+  <div id="unit-table">
     <table class="table table-hover">
       <thead class="thead-light">
         <tr>
@@ -35,8 +35,8 @@
               <%= link_to edit_unit_path(unit), remote: true, class: "btn btn-secondary btn-sm", role: "button" do %>
                   <%= icon('fas', 'edit') %>
                 <% end %>
-                <%= link_to unit_troubleshoot_path(unit), remote: true, class: "btn btn-light btn-sm", role: "button" do %>
-                  <%= icon('fas', 'laptop') %>
+                <% link_to unit_troubleshoot_path(unit), remote: true, class: "btn btn-light btn-sm", role: "button" do %>
+                  <% icon('fas', 'laptop') %>
                 <% end %>
               </div>
               
@@ -46,4 +46,4 @@
       </tbody>
     </table>
 </div>
-<center><%= paginate @units %></center>
+<center><%= paginate @units, theme: 'twitter-bootstrap-4' %></center>

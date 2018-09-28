@@ -22,6 +22,7 @@ gem 'httparty'                                          # APi access
 ## APP FUNCTIONALITY
 gem 'devise'                                            # Authentication
 gem 'kaminari'                                          # Pagination
+gem 'bootstrap4-kaminari-views'                         # Pagination theme
 gem 'ransack', github: 'activerecord-hackery/ransack'   # Searching
 gem 'validates_formatting_of'                           # validate models better
 

@@ -7,7 +7,7 @@ class Unit < ApplicationRecord
   
   ransacker :my_sort do
     Arel.sql(
-      "substring(name, '^[0-9]+')::int, substring(name, '[^0-9]*$')"
+      "substring(name, '^[0-9]+')::int"
     )
   end
   

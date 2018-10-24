@@ -48,7 +48,7 @@
                  <ul class="list-group">
                  <% @unit.switch_ports.each do |port| %>
                     <li class="list-group-item">
-                     <strong>Switch</strong> <%= port.switch.serial %> <strong>Port</strong> <%= port.number %>
+                     <strong>Switch</strong> <%= port.switch.name %> <strong>Port</strong> <%= port.number %>
                     </li> 
                 <% end %>
                 </ul>

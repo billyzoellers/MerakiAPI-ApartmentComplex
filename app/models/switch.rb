@@ -61,7 +61,7 @@ class Switch < ApplicationRecord
         
         hash = JSON.parse(response.body)
         
-        update_attribute(:name, h['name'])
+        update_attribute(:name, hash['name'])
     end
     
 end

@@ -60,12 +60,12 @@ class Unit < ApplicationRecord
       old_unit = Unit.find(id)
       # remove policy from old unit
       unless old_unit.mac_address.nil?
-        bandwidth_package.remove_from_mac(old_unit.mac_address)
+        bandwidth_package.remove_from_mac(old_unit.mac_address) unless bandwidth_package.nil?
       end
       
     end
 
-    bandwidth_package.apply_to_mac(mac_address)
+    bandwidth_package.apply_to_mac(mac_address) unless bandwidth_package.nil?
   end
   
   

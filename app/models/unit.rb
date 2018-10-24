@@ -51,6 +51,11 @@ class Unit < ApplicationRecord
   end
   
   def push_updates_to_meraki
+    # don't run on create
+    if created_at.nil?
+      return
+    end
+    
     if mac_address_changed?
       old_unit = Unit.find(id)
       # remove policy from old unit
